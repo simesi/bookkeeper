@@ -74,9 +74,48 @@
       <artifactId>commons-lang3</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>pl.pragmatists</groupId>
+      <artifactId>JUnitParams</artifactId>
+      <version>1.1.0</version>
+    <scope>test</scope>
+</dependency>
+
   </dependencies>
   <build>
     <plugins>
+      <plugin>
+       <groupId>org.pitest</groupId>
+       <artifactId>pitest-maven</artifactId>
+       <version>1.5.2</version>
+       <configuration>
+          <targetClasses>
+             <param>org.apache.bookkeeper.common.collections.BlockingMpscQueue*</param>
+          </targetClasses>
+          <targetTests>
+               <param>mytests.BlockingMpscQueueTest</param>
+          </targetTests>
+        </configuration>
+    </plugin>
+       <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+             <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <goals>
+             <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+        </plugin>
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
@@ -103,7 +142,4 @@
       </plugin>
     </plugins>
   </build>
-  <properties>
-    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
-  </properties>
 </project>

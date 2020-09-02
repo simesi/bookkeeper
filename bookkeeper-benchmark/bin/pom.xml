@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
    Licensed to the Apache Software Foundation (ASF) under one or more
    contributor license agreements.  See the NOTICE file distributed with
@@ -15,38 +15,46 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>stream-storage-parent</artifactId>
-    <groupId>org.apache.bookkeeper</groupId>
+    <groupId>org.apache.bookkeeper.tests</groupId>
+    <artifactId>integration</artifactId>
     <version>4.12.0-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
-  <groupId>org.apache.bookkeeper</groupId>
-  <artifactId>stream-storage-api</artifactId>
-  <name>Apache BookKeeper :: Stream Storage :: API</name>
+
+  <groupId>org.apache.bookkeeper.tests.integration</groupId>
+  <artifactId>smoke</artifactId>
+  <packaging>jar</packaging>
+  <name>Apache BookKeeper :: Tests :: Integration :: Smoke test</name>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.bookkeeper</groupId>
-      <artifactId>bookkeeper-common</artifactId>
-      <version>${project.parent.version}</version>
+      <artifactId>bookkeeper-server</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
     </dependency>
+
     <dependency>
-      <groupId>org.apache.bookkeeper</groupId>
-      <artifactId>stream-storage-common</artifactId>
-      <version>${project.parent.version}</version>
+      <groupId>org.apache.bookkeeper.tests</groupId>
+      <artifactId>integration-tests-utils</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
     </dependency>
+
     <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-buffer</artifactId>
+      <groupId>org.apache.bookkeeper.tests</groupId>
+      <artifactId>integration-tests-topologies</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
     </dependency>
+
     <dependency>
-      <groupId>org.inferred</groupId>
-      <artifactId>freebuilder</artifactId>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-standalone</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
-  <properties>
-    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
-  </properties>
 </project>

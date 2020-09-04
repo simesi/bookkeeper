@@ -9,26 +9,36 @@
     <version>4.12.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>jacoco-tests-report-aggregator</artifactId>
+  <artifactId>tests</artifactId>
 
   <properties>
-  <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../jacoco-tests-report-aggregator/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
+
+  <name>Tests</name>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.bookkeeper</groupId>
-      <artifactId>bookkeeper-common</artifactId>
-      <version>4.12.0-SNAPSHOT</version>
+    	<groupId>org.apache.bookkeeper</groupId>
+  		<artifactId>bookkeeper-benchmark</artifactId>
+  		<version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.bookkeeper</groupId>
+    	<artifactId>bookkeeper-common</artifactId>
+    	<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.bookkeeper</groupId>
-      <artifactId>bookkeeper-server</artifactId>
-      <version>4.12.0-SNAPSHOT</version>
+      <artifactId>bookkeeper-common-allocator</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.bookkeeper</groupId>
+  	  <artifactId>bookkeeper-server</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
-
-  <name>Tests</name>
 
   <build>
     <plugins>
@@ -41,7 +51,7 @@
             <goals>
               <goal>report-aggregate</goal>
             </goals>
-            <phase>test</phase>
+            <phase>verify</phase>
           </execution>
         </executions>
       </plugin>

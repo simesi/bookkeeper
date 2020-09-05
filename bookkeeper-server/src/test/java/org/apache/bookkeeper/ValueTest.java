@@ -45,67 +45,83 @@ public class ValueTest {
 		Assert.assertNull((v.project(mySet).getField("my Data")));
 
 	}
-	
-////Value merge(Value other)-------------------------------
+
+	////Value merge(Value other)-------------------------------
 	@Test (expected = java.lang.NullPointerException.class)
 	public void mergeTest1() {
-	   Value v = new Value();         //null
+		Value v = new Value();         //null
 		Assert.assertNull((v.merge(null))); //never reached
 
 	}
 	@Test (expected = java.lang.ClassCastException.class)
 	public void mergeTest2() {
-	   Value v = new Value();         //invalid input
+		Value v = new Value();         //invalid input
 		Assert.assertNull((v.merge((Value)new Object()))); //never reached
 
 	}
-	
+
 	@Test 
 	public void mergeTest3() {
 		byte[] b = ("myValue").getBytes();
-		
-	   Value v = new Value();        
-	   Value v2 = new Value();
-	   v.setField(myKey, b);
-	   v.merge(v2);
-			                  //valid input
+
+		Value v = new Value();        
+		Value v2 = new Value();
+		v.setField(myKey, b);
+		v.merge(v2);
+		//valid input
 		Assert.assertTrue(v.getField(myKey).equals(b)); 
 	}
-	
+
 	@Test   //to increase coverage
 	public void mergeTest4() {
 		byte[] b = ("value to overwrite").getBytes();
-		
-	   Value v = new Value();        
-	   Value v2 = new Value();
-	   v.setField(myKey, b);
-	   v2.setField(myKey, null);
-	   v.merge(v2);
-			                  
+
+		Value v = new Value();        
+		Value v2 = new Value();
+		v.setField(myKey, b);
+		v2.setField(myKey, null);
+		v.merge(v2);
+
 		Assert.assertNull(v.getField(myKey)); //the key is deleted after merge 
 	}
-	
-	
+
+
 	@Test   //to increase coverage
 	public void mergeTest5() {
 		byte[] b = ("value to overwrite").getBytes();
 		byte[] bNew = ("the new value").getBytes();
-		
-	   Value v = new Value();        
-	   Value v2 = new Value();
-	   v.setField(myKey, b);
-	   v2.setField(myKey, bNew);
-	   v.merge(v2);
-			                  
+
+		Value v = new Value();        
+		Value v2 = new Value();
+		v.setField(myKey, b);
+		v2.setField(myKey, bNew);
+		v.merge(v2);
+
 		Assert.assertTrue(v.getField(myKey).equals(bNew)); //the key value is updated 
 	}
-	
-	
+
+
 	//String toString()----------------------------
 	@Test 
 	public void toStringTest() {
-	Value v = new Value(); 
-	Assert.assertTrue(v.toString().equals("[]"));
+		Value v = new Value(); 
+		Assert.assertTrue(v.toString().equals("[]"));
 	}
-	
+
+	@Test  //to increase coverage
+	public void toStringTest2() {
+		String value ="the new value";
+		byte[] b = (value).getBytes();
+		Value v = new Value(); 
+		v.setField(myKey, b);
+		Assert.assertTrue(v.toString().equals("[('"+myKey+"'="+value+")]"));
+	}
+
+
+	@Test  //to increase coverage
+	public void toStringTest3() {
+		Value v = new Value(); 
+		v.setField(null, null);
+		Assert.assertTrue(v.toString().equals("[('NULL'=NONE)]"));
+	}
 }

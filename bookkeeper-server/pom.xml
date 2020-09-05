@@ -294,10 +294,10 @@
 <version>1.5.1</version>
 <configuration>
 <targetClasses>
-<param>org.apache.bookkeeper.Value</param>
+<param>org.apache.bookkeeper.metastore.Value</param>
 </targetClasses>
 <targetTests>
-<param>or.apache.bookkeeper.ValueTest</param>
+<param>org.apache.bookkeeper.ValueTest</param>
 </targetTests>
 <avoidCallsTo>
 <avoidCallsTo>java.util.logging</avoidCallsTo>

@@ -21,7 +21,8 @@ public class ValueTest {
 
 
 	Set<String> myEmptySet;
-	Set<String> mySet = new HashSet<String>();
+	Set<String> mySet;
+	String myKey="myKey";
 
 	//Value project(Set<String> fields)
 	@Test
@@ -38,6 +39,7 @@ public class ValueTest {
 	}
 	@Test
 	public void projectTest3() {
+		Set<String> mySet = new HashSet<String>();
 		mySet.add("my Data");
 		Value v = new Value();         //valid input
 		Assert.assertNull((v.project(mySet).getField("my Data")));
@@ -58,5 +60,24 @@ public class ValueTest {
 
 	}
 	
+	@Test 
+	public void mergeTest3() {
+		byte[] b = ("myValue").getBytes();
+		
+	   Value v = new Value();        
+	   Value v2 = new Value();
+	   v.setField(myKey, b);
+	   v.merge(v2);
+			                  //valid input
+		Assert.assertTrue(v.getField(myKey).equals(b)); 
+
+	}
+	
+	//String toString()----------------------------
+	@Test 
+	public void toStringTest() {
+	Value v = new Value(); 
+	Assert.assertTrue(v.toString().equals("[]"));
+	}
 	
 }

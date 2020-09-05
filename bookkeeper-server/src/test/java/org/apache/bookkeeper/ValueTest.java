@@ -70,8 +70,36 @@ public class ValueTest {
 	   v.merge(v2);
 			                  //valid input
 		Assert.assertTrue(v.getField(myKey).equals(b)); 
-
 	}
+	
+	@Test   //to increase coverage
+	public void mergeTest4() {
+		byte[] b = ("value to overwrite").getBytes();
+		
+	   Value v = new Value();        
+	   Value v2 = new Value();
+	   v.setField(myKey, b);
+	   v2.setField(myKey, null);
+	   v.merge(v2);
+			                  
+		Assert.assertNull(v.getField(myKey)); //the key is deleted after merge 
+	}
+	
+	
+	@Test   //to increase coverage
+	public void mergeTest5() {
+		byte[] b = ("value to overwrite").getBytes();
+		byte[] bNew = ("the new value").getBytes();
+		
+	   Value v = new Value();        
+	   Value v2 = new Value();
+	   v.setField(myKey, b);
+	   v2.setField(myKey, bNew);
+	   v.merge(v2);
+			                  
+		Assert.assertTrue(v.getField(myKey).equals(bNew)); //the key value is updated 
+	}
+	
 	
 	//String toString()----------------------------
 	@Test 

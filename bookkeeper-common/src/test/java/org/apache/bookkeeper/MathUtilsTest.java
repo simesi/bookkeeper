@@ -23,6 +23,11 @@ public class MathUtilsTest {
 		Assert.assertTrue(MathUtils.signSafeMod(3, -2)==1);
 		
 	}
+	@Test  //to increase coverage
+	public void signSafeModTest4() {   
+		Assert.assertTrue(MathUtils.signSafeMod(-2, 4)==2);
+		
+	}
 	
 	//int findNextPositivePowerOfTwo(final int value)-----------
 	

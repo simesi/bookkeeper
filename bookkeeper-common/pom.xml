@@ -114,7 +114,7 @@
 <version>1.5.1</version>
 <configuration>
 <targetClasses>
-<param>org.apache.bookkeeper.MathUtils</param>
+<param>org.apache.bookkeeper.common.util.MathUtils</param>
 </targetClasses>
 <targetTests>
 <param>org.apache.bookkeeper.MathUtilsTest</param>

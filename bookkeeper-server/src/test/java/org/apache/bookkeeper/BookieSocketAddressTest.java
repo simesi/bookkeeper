@@ -38,6 +38,10 @@ public class BookieSocketAddressTest {
 	@Test
 	public void BookieSocketAddressConstructorTest2() throws UnknownHostException {
 
+		 
+		InetAddresses mock = Mockito.mock(InetAddresses .class);
+	    Mockito.when(mock.isInetAddress(Mockito.anyString())).thenReturn(true);
+		
 		//valid input
 		BookieSocketAddress b = new BookieSocketAddress("hostname:1");
 		Assert.assertNotNull(b.getSocketAddress());

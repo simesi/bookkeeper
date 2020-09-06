@@ -103,4 +103,43 @@
       </plugin>
     </plugins>
   </build>
+<profiles>
+<profile>
+<id>pit-test</id>
+<build>
+<plugins>
+<plugin>
+<groupId>org.pitest</groupId>
+<artifactId>pitest-maven</artifactId>
+<version>1.5.1</version>
+<configuration>
+<targetClasses>
+<param>org.apache.bookkeeper.MathUtils</param>
+</targetClasses>
+<targetTests>
+<param>org.apache.bookkeeper.MathUtilsTest</param>
+</targetTests>
+<avoidCallsTo>
+<avoidCallsTo>java.util.logging</avoidCallsTo>
+<avoidCallsTo>org.apache.log4j</avoidCallsTo>
+<avoidCallsTo>org.slf4j</avoidCallsTo>
+<avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
+</avoidCallsTo>
+</configuration>
+<executions>
+<execution>
+<id>mutuation-coverage</id>
+<goals>
+<goal>mutationCoverage</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+</plugins>
+</build>
+</profile>
+      </profiles>
+<properties>
+    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
+  </properties>
   </project>

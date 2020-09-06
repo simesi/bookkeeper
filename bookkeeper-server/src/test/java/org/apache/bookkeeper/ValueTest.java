@@ -7,16 +7,9 @@ import java.util.Set;
 import org.apache.bookkeeper.metastore.*;
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.powermock.*;
-import org.powermock.api.mockito.PowerMockito;
 
-//@RunWith(MockitoJUnitRunner.class)
+
+
 public class ValueTest {
 
 
